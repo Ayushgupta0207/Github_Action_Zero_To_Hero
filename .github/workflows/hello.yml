@@ -12,9 +12,17 @@ jobs:
 # This is the job name
   greet:
     runs-on: ubuntu-latest
+    env:
+      MY_NAME: Ayush Gupta
     steps:
       - name: Say hello to user
         run: echo "Hello Doston"
 
       - name: Say hello to userName
         run: echo "Hello $USER"
+
+      - name: Say Hello to me
+        run: |
+          echo "Hello $MY_NAME"
+          echo "Github Username: ${{ github.actor }}    
+
