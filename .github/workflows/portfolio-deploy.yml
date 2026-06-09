@@ -16,7 +16,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: $ {{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       # get access to your portfolio code via pre built actions
       - name: Checkout the code from github repository
@@ -33,4 +33,4 @@ jobs:
           path: "."
 
       - name: Deploy to github pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
