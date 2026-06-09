@@ -8,6 +8,7 @@ on:
 permissions:
   pages: write # to deploy to github pages
   id-token: write # to authenticate with cloud provider
+  contents: read # to read the content of the repository
 
 jobs:
 
@@ -30,7 +31,8 @@ jobs:
       - name: Upload static file
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "."
+          path: .
 
       - name: Deploy to github pages
+        id: deployment
         uses: actions/deploy-pages@v5
