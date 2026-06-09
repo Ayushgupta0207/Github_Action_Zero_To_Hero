@@ -1,0 +1,27 @@
+name: CICD
+
+on:
+  workflow_dispatch: 
+
+jobs:
+
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        run: echo "Code has been pushed to build"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build the container
+        run: echo "Docker container is build"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test the container
+        run: echo "Container tested successfully"
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy the Container
+        run: echo "Code has been live on Production"
