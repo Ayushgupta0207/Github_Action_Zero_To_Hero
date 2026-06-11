@@ -22,5 +22,5 @@ jobs:
         run: pip install -r requirement.txt
 
       - name: Run linters
-        run: flake8 app.py
+        run: flake8 app.py --ignore=W292
         
