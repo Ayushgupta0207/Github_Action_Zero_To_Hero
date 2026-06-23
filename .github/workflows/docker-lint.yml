@@ -1,0 +1,19 @@
+# Scan the Dockerfile and CVEs
+name: Docker Lint
+
+on:
+  workflow_call:
+
+jobs:
+  validate-dockerfile:
+    runs-on: ubutnu-latest
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Validate Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Docker
