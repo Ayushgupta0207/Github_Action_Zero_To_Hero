@@ -1,0 +1,25 @@
+# pip audit for python code
+# OWASP for java code 
+name: Dependency Scan
+
+on:
+  workflow_call:
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Code checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pip dependency Audit
+        run: pip install pip-audit
+
+      - name: Audit Dependencies
+        run: pip-audit -r rquirement.txt
+
