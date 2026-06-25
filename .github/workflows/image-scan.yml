@@ -17,7 +17,7 @@ jobs:
 
       - name: Update packages
         run: |
-            apt-get update && apt-get upgrade -y
+            sudo apt-get update && sudo apt-get upgrade -y
 
       - name: Trivy Scanner
         uses: aquasecurity/trivy-action@v0.36.0
