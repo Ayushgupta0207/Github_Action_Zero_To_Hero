@@ -5,30 +5,35 @@ on:
     branches: [main]
 
 jobs:
+  # Code Quality Check
   code-quality:
     uses: ./.github/workflows/code-quality.yml
 
+  # Secret Scan
   secret-scan:
     uses: ./.github/workflows/secrets-scan.yml
 
+  # Dependency Scan
   dependency-scan:
     uses: ./.github/workflows/dependency-scan.yml
 
+  # Docker Lint / Scan
   docker-scan:
     uses: ./.github/workflows/docker-lint.yml
 
+  # Build & Push Docker Image
   build:
-    needs: [code-quality, secret-scan,dependency-scan,docker-scan]
+    needs: [code-quality, secret-scan, dependency-scan, docker-scan]
     uses: ./.github/workflows/docker-push.yml
     secrets: inherit
 
-  # Image Scan
+  # Trivy Image Scan
   trivy:
     needs: [build]
     uses: ./.github/workflows/image-scan.yml
     secrets: inherit
 
-  # Deploy To production
+  # Deploy to Production Server
   deploy:
     needs: [trivy]
     uses: ./.github/workflows/deploy-to-server.yml
